@@ -11,9 +11,9 @@ The repository contains three main scripts, each addressing a different multimed
 
 | Script | Description |
 |--------|--------------|
-| `Θέμα1Ερώτημα1.py` | Implements **lossless error-frame encoding** using **Run-Length Encoding (RLE)** on the difference between consecutive video frames. |
-| `Θέμα1Ερώτημα2.py` | Implements **motion estimation and compensation** using **macroblock-based hierarchical block matching** (64×64 blocks, search radius = 32). |
-| `Θέμα2Τελικό.py` | Implements **object removal** from a short video sequence using **motion-compensated inpainting** techniques. |
+| `Q1part1.py` | Implements **lossless error-frame encoding** using **Run-Length Encoding (RLE)** on the difference between consecutive video frames. |
+| `Q1part2.py` | Implements **motion estimation and compensation** using **macroblock-based hierarchical block matching** (64×64 blocks, search radius = 32). |
+| `Q2.py` | Implements **object removal** from a short video sequence using **motion-compensated inpainting** techniques. |
 
 Each task demonstrates a fundamental concept in digital video compression and manipulation.
 
@@ -48,11 +48,10 @@ Each task demonstrates a fundamental concept in digital video compression and ma
 ```
 Multimedia-Systems-Project/
 │
-├── Θέμα1Ερώτημα1.py        # Lossless error-frame encoding (RLE)
-├── Θέμα1Ερώτημα2.py        # Motion estimation and compensation
-├── Θέμα2Τελικό.py           # Object removal using motion compensation
+├── Q1part1.py       # Lossless error-frame encoding (RLE)
+├── Q1part2.py        # Motion estimation and compensation
+├── Q2.py           # Object removal using motion compensation
 ├── README.md               # Project documentation
-└── example_videos/         # (Optional) Input or output demo videos
 ```
 
 ---
@@ -79,17 +78,17 @@ Each script is self-contained and can be executed independently.
 
 ### Example (Run-Length Encoding task)
 ```bash
-python Θέμα1Ερώτημα1.py
+python Q1part1.py
 ```
 
 ### Example (Motion estimation task)
 ```bash
-python Θέμα1Ερώτημα2.py
+python Q1part2.py
 ```
 
 ### Example (Object removal task)
 ```bash
-python Θέμα2Τελικό.py
+python Q2.py
 ```
 
 By default, each script expects a local video file named `ball.mp4`.  
