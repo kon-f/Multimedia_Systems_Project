@@ -114,12 +114,6 @@ def find_center(x, y):
 def find_residual(target_frame, predicted_frame):
     return np.subtract(target_frame, predicted_frame)
 
-# Function to reconstruct the target frame
-def reconstruct_target(residual_frame, predicted_frame):
-    return np.add(residual_frame, predicted_frame)
-
-
-
 #Main Program
 
 # Read the video
@@ -161,13 +155,13 @@ cap.release()
 # Print the total number of frames extracted
 print("Total frames extracted:", frame_count)
 
-# Now you have a list of grayscale frames for further processing
+# Now we have a list of grayscale frames for further processing
 
 predicted_frames = predict_frames(frames) #predicted_frames[i] now has frames[i-1](previous frame)except for the i-frame
 background = frames[0]
 target_frames = []
 residual_frames = []
-removed_object_frames = [predicted_frames[0]]
+removed_object_frames = [predicted_frames[0]]   
 
 for i in range(1, len(frames)):
     # Create the predicted frame using the previous removed object frame
@@ -199,7 +193,10 @@ for residual_frame in residual_frames:
     # Check if 'q' key is pressed to exit the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-       
+        
+# Close all OpenCV windows
+cv2.destroyAllWindows()
+ 
 #Create a new video without the object
 
 #Get frame shape
@@ -210,13 +207,7 @@ frame_height = frames[0].shape[0]
 fourcc = cv2.VideoWriter_fourcc(*'H264')
 final_video = cv2.VideoWriter('removed_ball.mp4', fourcc, fps, (frame_width, frame_height))
 
-# print("Original Frame Width:", frame_width)
-# print("Original Frame Height:", frame_height)
-# print("New Frame Width(0):", removed_object_frames[0].shape[1])
-# print("New Frame Height(0):", removed_object_frames[0].shape[0])   
-# print("New Frame Width(10):", removed_object_frames[10].shape[1])
-# print("New Frame Height(10):", removed_object_frames[10].shape[0])  
-             
+
 # Visualize the reconstructed frames and write them into final_video
 for frame_with_object_removed in removed_object_frames:
     # # Normalize pixel values to the valid range (0-255)

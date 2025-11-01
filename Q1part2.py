@@ -1,14 +1,5 @@
 import cv2
 import numpy as np 
-import os 
-import math
-from glob import glob
-from natsort import natsorted
-
-import zlib
-import sys
-import cv2
-import os
 
 def read_video_frames():
     """
@@ -50,7 +41,7 @@ def read_video_frames():
     # Print the total number of frames extracted
     print("Total frames extracted:", frame_count)
 
-    # Now we have a list of grayscale frames for further processing
+    # Now you have a list of grayscale frames for further processing
     
     return frames  # Return the list of frames
 
@@ -134,66 +125,24 @@ def find_match_hierarchical(target_block, search_area):
 
     return best_match
 
-
-# Define the create_predicted_hierarchical function
+# Function to create a predicted frame using hierarchical motion compensation
 def create_predicted_hierarchical(predicted_frame, current_frame):
     predicted = predicted_frame.copy()
     current_blocks = split_frame(current_frame)
 
     for i in range(0, len(current_blocks)):
         current_block = current_blocks[i]
+        iframe_block = find_match_hierarchical(current_block, predicted)
+        
         x, y = get_block_position(i, current_frame.shape[1], current_frame.shape[0])
-        search_area = predicted[y - 64:y + 64 + current_block.shape[0], x - 64:x + 64 + current_block.shape[1]]
-        iframe_block = find_match_hierarchical(current_block, search_area)
-
-        if predicted[y:y + current_block.shape[0], x:x + current_block.shape[1]].shape == iframe_block.shape:
+        predicted_block = predicted[y:y + current_block.shape[0], x:x + current_block.shape[1]]
+        
+        if predicted_block.shape == iframe_block.shape:
             predicted[y:y + current_block.shape[0], x:x + current_block.shape[1]] = iframe_block
         else:
-            print(f"Shapes mismatch: current_block shape: {current_block.shape}, iframe_block shape: {iframe_block.shape}")
+            print(f"Shapes mismatch: predicted_block shape: {predicted_block.shape}, iframe_block shape: {iframe_block.shape}")
 
-    return predicted 
-
-# # Function to create a predicted frame using hierarchical motion compensation
-# def create_predicted_hierarchical(predicted_frame, current_frame):
-#     predicted = predicted_frame.copy()
-#     current_blocks = split_frame(current_frame)
-
-#     for i in range(0, len(current_blocks)):
-#         current_block = current_blocks[i]
-#         iframe_block = find_match_hierarchical(current_block, predicted)
-        
-#         x, y = get_block_position(i, current_frame.shape[1], current_frame.shape[0])
-#         predicted_block = predicted[y:y + current_block.shape[0], x:x + current_block.shape[1]]
-        
-#         if predicted_block.shape == iframe_block.shape:
-#             predicted[y:y + current_block.shape[0], x:x + current_block.shape[1]] = iframe_block
-#         else:
-#             print(f"Shapes mismatch: predicted_block shape: {predicted_block.shape}, iframe_block shape: {iframe_block.shape}")
-
-#     return predicted
-
-
-# Function to divide a frame into macroblocks and get their coordinates
-def divide_frame(frame):
-    height, width = frame.shape
-    vertical_mblocks = int(height / 64)  
-    horizontal_mblocks = int(width / 64)  
-
-    return vertical_mblocks, horizontal_mblocks
-
-# Function to find the search area for hierarchical motion compensation
-def find_search_area(x, y, frame):
-    height, width = frame.shape
-    center_x, center_y = find_center(x, y)
-
-    search_x = max(0, center_x - 32)  
-    search_y = max(0, center_y - 32)  
-
-    search_area = frame[search_y:min(search_y + 64, height), search_x:min(search_x + 64, width)]
-
-    return search_area
-
-
+    return predicted
 
 # Function to get the block zone for motion compensation
 def get_block_zone(p, search_area, current_block):
@@ -225,7 +174,7 @@ def reconstruct_target(residual_frame, predicted_frame):
 #Main Program
 frames = read_video_frames()
 frames_debug = []
-frames_debug = frames[:3]  # Take the first few frames from the frames list
+frames_debug = frames[:2]  # Take the first few frames from the frames list
                            # Testing with only a few frames for faster program runtime 
 predicted_frames = predict_frames(frames_debug)
 
@@ -285,4 +234,3 @@ for reconstructed_frame in reconstructed_frames:
     # Check if 'q' key is pressed to exit the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-           
