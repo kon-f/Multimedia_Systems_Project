@@ -118,8 +118,8 @@ You can modify the filename in the script to use your own input video.
 | Task | Example |
 |------|----------|
 | **Error Frame Visualization** | ![Error Frame](screenshots/ImageErrorSequenceVisualisation.jpg) |
-| **Reconstructed Frame (after decoding)** | ![Decoded Frame](screenshots/ReconstructedFrame.jpg) |
-| **Motion Estimation Console Output** | ![Motion Estimation](screenshots/Θεμα1Ερωτημα2Run.jpg) |
+| **Reconstructed Frame (after decoding)** | ![Decoded Frame](screenshots/ReconstructedFrame2.jpg) |
+| **Motion Estimation Console Output** | ![Motion Estimation](screenshots/Q1part2.jpg) |
 
 ## 🧾 Notes
 
