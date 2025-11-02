@@ -117,9 +117,12 @@ You can modify the filename in the script to use your own input video.
 
 | Task | Example |
 |------|----------|
-| **Error Frame Visualization** | ![Error Frame](screenshots/ImageErrorSequenceVisualisation.jpg) |
-| **Reconstructed Frame (after decoding)** | ![Decoded Frame](screenshots/ReconstructedFrame2.jpg) |
-| **Motion Estimation Console Output** | ![Motion Estimation](screenshots/Q1part2.jpg) |
+| **Error Frame Visualization (Q1part1)** | ![Error Frame](screenshots/ImageErrorSequenceVisualisation.jpg) |
+| **Q1part1 Executed** | ![Q1part1](screenshots/Q1part1.jpg) |
+| **Motion Estimation Console Output (Q1part2)** | ![Motion Estimation](screenshots/Q1part2.jpg) |
+| **Residual Frame** | ![Residual Frame](screenshots/ResidualFrame2.jpg) |
+| **Reconstructed Frame (after decoding)** | ![Reconstructed Frame](screenshots/ReconstructedFrame2.jpg) |
+
 
 ## 🧾 Notes
 
