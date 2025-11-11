@@ -1,4 +1,11 @@
 # Multimedia Systems Project
+![Language](https://img.shields.io/badge/Language-Python%203.8%2B-blue?logo=python)
+![Library](https://img.shields.io/badge/Library-OpenCV-red?logo=opencv)
+![Library](https://img.shields.io/badge/Library-NumPy-orange?logo=numpy)
+![Concept](https://img.shields.io/badge/Concepts-RLE%20%7C%20Motion%20Estimation%20%7C%20Compensation-lightgrey)
+![Field](https://img.shields.io/badge/Field-Computer%20Vision%20%26%20Video%20Processing-brightgreen)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
 This project was developed as part of a Multimedia Systems course and demonstrates core concepts of **video processing**, including **lossless encoding**, **motion estimation and compensation**, and **object removal using motion prediction**.  
 All implementations are written in **Python** using `OpenCV` and `NumPy`, focusing on algorithmic understanding rather than the use of high-level libraries.
